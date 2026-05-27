@@ -199,7 +199,6 @@ Archivos sensibles excluidos via `.gitignore`:
 
 - API keys (`.env`, `*.key`, `*.pem`)
 - Reportes locales generados
-- Notas personales de entrevista
 
 Politica recomendada:
 

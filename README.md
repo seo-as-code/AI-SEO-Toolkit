@@ -199,7 +199,6 @@ Sensitive files are excluded via `.gitignore`:
 
 - API keys (`.env`, `*.key`, `*.pem`)
 - Generated local reports
-- Local-only interview notes
 
 Recommended policy:
 

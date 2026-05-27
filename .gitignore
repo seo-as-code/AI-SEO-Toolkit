@@ -25,6 +25,3 @@ data/features/*
 Thumbs.db
 .idea/
 .vscode/
-
-# Local interview prep (keep private)
-INTERVIEW_PLAYBOOK.md
