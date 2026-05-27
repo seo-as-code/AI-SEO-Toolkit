@@ -129,6 +129,31 @@ Archivo de modelo: `config/model.yaml`
 
 ---
 
+## Quick test (sin credenciales)
+
+Puedes probar este repositorio **sin API keys ni tokens OAuth** usando el Modulo 01 (mapa semantico).
+
+```bash
+git clone https://github.com/seo-as-code/AI-SEO-Toolkit.git
+cd AI-SEO-Toolkit
+pip install -r requirements.txt
+python scripts/modules/01_semantic_map.py
+```
+
+Salida esperada:
+
+- `reports/ai/01_semantic_map_*.csv`
+- `reports/ai/01_semantic_map_*.json`
+
+Para probar otro sitio web, edita `config/project.yaml`:
+
+- `project.domain`
+- `project.origin`
+
+Nota: los modulos 03, 05, 07 y el pipeline maestro completo requieren exportes previos (GSC/SF) o configuracion adicional.
+
+---
+
 ## 7. Flujo de ejecucion
 
 ### 7.1 Preparar datos (repo SEO-as-Code)
