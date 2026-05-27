@@ -1,0 +1,7 @@
+Analyze website content and return:
+1) Main semantic topics
+2) Topic hierarchy (primary/secondary)
+3) Potential cannibalization risks
+4) Missing topic clusters
+
+Keep output concise and actionable for SEO teams.

@@ -1,0 +1,30 @@
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated outputs (keep structure, ignore local runs)
+reports/ai/*.csv
+reports/ai/*.json
+reports/ai/*.md
+reports/executive/*.md
+data/features/*
+!data/features/.gitkeep
+!reports/ai/.gitkeep
+!reports/executive/.gitkeep
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local interview prep (keep private)
+INTERVIEW_PLAYBOOK.md

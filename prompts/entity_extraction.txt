@@ -1,0 +1,1 @@
+Extract named entities (brands, services, locations) and their frequency across URLs.

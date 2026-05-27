@@ -1,0 +1,1 @@
+Generate SEO rewrite suggestions for title, meta description, H1 and CTA based on query demand and page context.

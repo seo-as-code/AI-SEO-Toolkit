@@ -1,0 +1,30 @@
+project:
+  name: "Studio Rethink Ibiza"
+  domain: "studiorethinkibiza.com"
+  origin: "https://studiorethinkibiza.com"
+  locale: "es-ES"
+  market: "Ibiza, Spain"
+
+# Optional: connect with SEO-as-Code data exports from sibling project
+data_sources:
+  gsc_glob: "../data/raw/gsc_*.csv"
+  ga4_csv: "../data/raw/ga4_traffic_last30days.csv"
+  sf_csv: "../data/raw/internos_todo.csv"
+
+competitors:
+  - "https://www.example-competitor-1.com"
+  - "https://www.example-competitor-2.com"
+
+crawl:
+  max_pages: 25
+  timeout_seconds: 15
+  user_agent: "AI-SEO-Toolkit/1.0 (+https://github.com/seo-as-code)"
+
+thresholds:
+  min_impressions_for_gap: 100
+  min_position_for_opportunity: 4
+  max_position_for_opportunity: 20
+
+output:
+  reports_dir: "reports/ai"
+  executive_dir: "reports/executive"

@@ -1,0 +1,7 @@
+provider: "openai"
+model_name: "gpt-4o-mini"
+api_key_env: "OPENAI_API_KEY"
+temperature: 0.2
+max_tokens: 1200
+
+# If no API key is found, modules run in rules-based mode automatically.

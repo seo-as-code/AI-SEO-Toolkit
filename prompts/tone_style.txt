@@ -1,0 +1,1 @@
+Analyze tone, readability, and brand consistency. Return recommendations per URL.

@@ -1,0 +1,9 @@
+Create a prioritized SEO action plan with:
+- action
+- reason
+- impact (high/medium/low)
+- effort (high/medium/low)
+- owner
+- expected outcome
+
+Sort by business impact first, then implementation effort.

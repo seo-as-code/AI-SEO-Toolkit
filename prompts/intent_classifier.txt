@@ -1,0 +1,9 @@
+Classify each query/page into one intent label:
+- informational
+- commercial
+- transactional
+- navigational
+- local
+- mixed
+
+Return intent + confidence + recommended page type.

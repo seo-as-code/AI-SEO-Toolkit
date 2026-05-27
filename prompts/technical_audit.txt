@@ -1,0 +1,1 @@
+Audit technical SEO issues: status codes, indexability, metadata completeness, thin content.
