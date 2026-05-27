@@ -1,6 +1,26 @@
 # AI SEO Toolkit
 
-> **Languages:** [English](ai-seo-toolkit/README.md) | [Español](ai-seo-toolkit/README.es.md)
+> **Languages:** [English](README.md) | [Español](README.es.md)
+
+## Quick test (no credentials)
+
+Test this repository **without API keys or OAuth tokens** (Module 01: semantic site map).
+
+```bash
+git clone https://github.com/seo-as-code/AI-SEO-Toolkit.git
+cd AI-SEO-Toolkit
+pip install -r requirements.txt
+python scripts/modules/01_semantic_map.py
+```
+
+Expected output:
+
+- `reports/ai/01_semantic_map_*.csv`
+- `reports/ai/01_semantic_map_*.json`
+
+Change target website in `config/project.yaml` (`project.domain`, `project.origin`).
+
+---
 
 ## 1. Project overview
 
@@ -126,31 +146,6 @@ Model config file: `config/model.yaml`
 
 - Optional OpenAI settings (`OPENAI_API_KEY`)
 - Rule-based mode works without API key
-
----
-
-## Quick test (no credentials)
-
-You can test this repository **without API keys or OAuth tokens** using Module 01 (semantic site map).
-
-```bash
-git clone https://github.com/seo-as-code/AI-SEO-Toolkit.git
-cd AI-SEO-Toolkit
-pip install -r requirements.txt
-python scripts/modules/01_semantic_map.py
-```
-
-Expected output:
-
-- `reports/ai/01_semantic_map_*.csv`
-- `reports/ai/01_semantic_map_*.json`
-
-To test another website, edit `config/project.yaml`:
-
-- `project.domain`
-- `project.origin`
-
-Note: modules 03, 05, 07 and the full master pipeline require prior data exports (GSC/SF) or additional setup.
 
 ---
 
