@@ -9,7 +9,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from lib.common import (  # noqa: E402
     discover_internal_urls,
     fetch_html,
-    load_yaml,
+    load_project_config,
     parse_page,
     save_csv,
     save_json,
@@ -37,7 +37,7 @@ def build_semantic_topics(pages: list[dict]) -> list[dict]:
 
 
 def run() -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     origin = cfg["project"]["origin"]
     domain = cfg["project"]["domain"]
     crawl_cfg = cfg.get("crawl", {})

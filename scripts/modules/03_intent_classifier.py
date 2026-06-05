@@ -8,7 +8,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, timestamp  # noqa: E402
 
 
 INTENT_RULES = {
@@ -33,7 +33,7 @@ def classify_intent(text: str) -> str:
 
 
 def run(gsc_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     ds = cfg.get("data_sources", {})
     gsc_file = gsc_path or latest_file(str(ROOT / ds.get("gsc_glob", "../data/raw/gsc_*.csv")))
 

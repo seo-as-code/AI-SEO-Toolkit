@@ -9,7 +9,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, timestamp  # noqa: E402
 
 ENTITY_PATTERN = re.compile(r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})\b")
 
@@ -25,7 +25,7 @@ def extract_entities(text: str) -> list[str]:
 
 
 def run(semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     semantic_file = semantic_path or latest_file(str(ROOT / "reports/ai/01_semantic_map_*.csv"))
     if not semantic_file or not Path(semantic_file).exists():
         raise FileNotFoundError("Run module 01 first to generate semantic map.")

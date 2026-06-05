@@ -18,7 +18,22 @@ Expected output:
 - `reports/ai/01_semantic_map_*.csv`
 - `reports/ai/01_semantic_map_*.json`
 
-Change target website in `config/project.yaml` (`project.domain`, `project.origin`).
+### Configure your site before testing
+
+1. Copy `config/project.local.yaml.example` → `config/project.local.yaml`
+2. Edit **only** `project.local.yaml` (gitignored, never pushed)
+
+Fields under `project:`:
+
+| Field | What to enter | Example |
+|-------|---------------|---------|
+| `name` | Site or brand name | `"My SEO Project"` |
+| `domain` | Hostname without `https://` | `"example.com"` |
+| `origin` | Base URL with `https://` | `"https://example.com"` |
+| `locale` | BCP-47 language/region | `"en-US"` or `"es-ES"` |
+| `market` | Target market (free text) | `"London, UK"` |
+
+`config/project.yaml` in GitHub stays generic. Put real site data in `project.local.yaml`.
 
 ---
 
@@ -29,8 +44,6 @@ Change target website in `config/project.yaml` (`project.domain`, `project.origi
 It is designed as the **decision layer** on top of the data extraction repository:
 
 - [SEO-as-Code-Toolkit](https://github.com/seo-as-code/SEO-as-Code-Toolkit)
-
-Current reference project: `studiorethinkibiza.com`
 
 ---
 
@@ -130,12 +143,20 @@ ai-seo-toolkit/
 
 ## 6. Configuration
 
-Main config file: `config/project.yaml`
+Configuration files:
 
-Key fields:
+| File | On GitHub | Purpose |
+|------|-----------|---------|
+| `config/project.yaml` | Yes | Generic template |
+| `config/project.local.yaml` | **No** | Your real site (copy from `.example`) |
 
-- `project.domain`
-- `project.origin`
+Key fields under `project:` (fill in the `.local` file):
+
+- `name` — site or brand name
+- `domain` — hostname without `https://`
+- `origin` — base URL with `https://`
+- `locale` — language/region (e.g. `en-US`)
+- `market` — target market (free text)
 - `data_sources.gsc_glob`
 - `data_sources.ga4_csv`
 - `data_sources.sf_csv`

@@ -7,11 +7,11 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_md, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_md, timestamp  # noqa: E402
 
 
 def run(gaps_path: str | None = None, semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     gaps_file = gaps_path or latest_file(str(ROOT / "reports/ai/05_content_gaps_*.csv"))
     semantic_file = semantic_path or latest_file(str(ROOT / "reports/ai/01_semantic_map_*.csv"))
 

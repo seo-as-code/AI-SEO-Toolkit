@@ -7,7 +7,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, save_md, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, save_md, timestamp  # noqa: E402
 
 
 def analyze_style(text: str) -> dict:
@@ -28,7 +28,7 @@ def analyze_style(text: str) -> dict:
 
 
 def run(semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     semantic_file = semantic_path or latest_file(str(ROOT / "reports/ai/01_semantic_map_*.json"))
     if not semantic_file:
         semantic_file = latest_file(str(ROOT / "reports/ai/01_semantic_map_*.csv"))
@@ -66,15 +66,16 @@ def run(semantic_path: str | None = None) -> dict:
     save_csv(out_df, csv_path)
 
     tone_counts = out_df["tone"].value_counts().to_dict() if not out_df.empty else {}
+    dom = max(tone_counts, key=tone_counts.get) if tone_counts else "n/d"
     md = [
-        "# Tone and Style Analysis",
+        "# Análisis de tono y estilo",
         "",
-        f"- Pages analyzed: {len(out_df)}",
-        f"- Dominant tone: {max(tone_counts, key=tone_counts.get) if tone_counts else 'n/a'}",
+        f"- Páginas analizadas: {len(out_df)}",
+        f"- Tono dominante: {dom}",
         "",
-        "## Recommendations",
-        "- Keep tone consistent across service and landing pages.",
-        "- Reduce sentence length on pages marked as complex readability.",
+        "## Recomendaciones",
+        "- Mantener el mismo tono en landings de servicio y páginas clave.",
+        "- Acortar frases en páginas con legibilidad compleja.",
     ]
     save_md("\n".join(md) + "\n", md_path)
 

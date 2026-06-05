@@ -18,7 +18,22 @@ Salida esperada:
 - `reports/ai/01_semantic_map_*.csv`
 - `reports/ai/01_semantic_map_*.json`
 
-Cambia el sitio en `config/project.yaml` (`project.domain`, `project.origin`).
+### Configura tu sitio antes de probar
+
+1. Copia `config/project.local.yaml.example` → `config/project.local.yaml`
+2. Edita **solo** `project.local.yaml` (está en `.gitignore`, no se sube a GitHub)
+
+Campos de la sección `project:`:
+
+| Campo | Qué poner | Ejemplo |
+|-------|-----------|---------|
+| `name` | Nombre del sitio o marca | `"Mi Empresa SEO"` |
+| `domain` | Dominio sin `https://` | `"example.com"` |
+| `origin` | URL base con `https://` | `"https://example.com"` |
+| `locale` | Idioma/región BCP-47 | `"es-ES"` o `"en-US"` |
+| `market` | Mercado objetivo (texto libre) | `"Madrid, Spain"` |
+
+`config/project.yaml` en GitHub lleva placeholders genéricos. Tus datos reales van en `project.local.yaml`.
 
 ---
 
@@ -29,8 +44,6 @@ Cambia el sitio en `config/project.yaml` (`project.domain`, `project.origin`).
 Esta capa funciona sobre el repositorio de extraccion de datos:
 
 - [SEO-as-Code-Toolkit](https://github.com/seo-as-code/SEO-as-Code-Toolkit)
-
-Proyecto de referencia actual: `studiorethinkibiza.com`
 
 ---
 
@@ -71,7 +84,7 @@ AI-SEO-Toolkit (Capa de Decision)
 
 ---
 
-## 4. Framework: 10 modulos AI SEO
+## 4. Framework: 11 modulos AI SEO
 
 | # | Modulo | Script | Output principal | Uso de negocio |
 |---|---|---|---|---|
@@ -84,7 +97,8 @@ AI-SEO-Toolkit (Capa de Decision)
 | 07 | Auditoria tecnica SEO | `07_technical_audit.py` | listado de incidencias | Corregir indexabilidad/metadata |
 | 08 | Analisis UX/CRO | `08_ux_cro.py` | checks UX | Mejorar conversion |
 | 09 | Gap competitivo | `09_competitor_gap.py` | gaps vs competidores | Capturar oportunidades no cubiertas |
-| 10 | Plan de accion | `10_action_plan.py` | plan ejecutivo priorizado | Hoja de ruta de ejecucion |
+| 10 | Plan de accion | `10_action_plan.py` | CSV priorizado (Excel) | Seguimiento operativo |
+| 11 | Informe ejecutivo (ES) | `11_executive_report.py` | **`11_informe_ejecutivo_*.md`** | **Un solo informe legible: modulo a modulo** |
 
 Orquestador maestro:
 
@@ -112,6 +126,7 @@ ai-seo-toolkit/
       08_ux_cro.py
       09_competitor_gap.py
       10_action_plan.py
+      11_executive_report.py
     orchestrator/
       ai_seo_master.py
   prompts/
@@ -130,12 +145,20 @@ ai-seo-toolkit/
 
 ## 6. Configuracion
 
-Archivo principal: `config/project.yaml`
+Archivos de configuración:
 
-Campos clave:
+| Archivo | En GitHub | Uso |
+|---------|-----------|-----|
+| `config/project.yaml` | Sí | Plantilla genérica |
+| `config/project.local.yaml` | **No** | Tu sitio real (copia desde `.example`) |
 
-- `project.domain`
-- `project.origin`
+Campos clave en `project:` (añade tu web en el `.local`):
+
+- `name` — nombre del sitio o marca
+- `domain` — dominio sin `https://`
+- `origin` — URL base con `https://`
+- `locale` — idioma/región (ej. `es-ES`)
+- `market` — mercado objetivo (texto libre)
 - `data_sources.gsc_glob`
 - `data_sources.ga4_csv`
 - `data_sources.sf_csv`

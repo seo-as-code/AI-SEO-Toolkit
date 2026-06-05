@@ -1,15 +1,16 @@
+# Añade aquí los datos de TU sitio web (no subas secretos ni datos de clientes a GitHub).
 project:
-  name: "Studio Rethink Ibiza"
-  domain: "studiorethinkibiza.com"
-  origin: "https://studiorethinkibiza.com"
-  locale: "es-ES"
-  market: "Ibiza, Spain"
+  name: "YOUR_PROJECT_NAME"          # Nombre del sitio o marca (texto libre)
+  domain: "your-domain.com"          # Dominio sin https:// ni barra final
+  origin: "https://your-domain.com"  # URL base con https://, sin barra final
+  locale: "es-ES"                    # Idioma/región: es-ES, en-US, en-GB, etc.
+  market: "Your city, Your country"  # Mercado objetivo (texto libre)
 
-# Optional: connect with SEO-as-Code data exports from sibling project
+# Opcional: conecta con exportes del repo SEO-as-Code (rutas relativas al toolkit)
 data_sources:
   gsc_glob: "../data/raw/gsc_*.csv"
   ga4_csv: "../data/raw/ga4_traffic_last30days.csv"
-  sf_csv: "../data/raw/internos_todo.csv"
+  sf_csv: "../data/raw/internos_html.csv"
 
 competitors:
   - "https://www.example-competitor-1.com"
@@ -28,3 +29,26 @@ thresholds:
 output:
   reports_dir: "reports/ai"
   executive_dir: "reports/executive"
+
+blog_strategy:
+  max_suggestions: 5
+  max_gsc_suggestions: 2
+  blog_path_prefix: "/blog/"
+  min_impressions: 50
+  coverage_missing_threshold: 0.15
+  coverage_expand_threshold: 0.35
+  prefer_intents:
+    - informational
+    - local
+    - mixed
+  service_pages:
+    - path: "/services/example/"
+      anchors: ["your main service keyword"]
+  hub_pages:
+    - path: "/services/"
+      anchors: ["your services hub anchor text"]
+  editorial_ideas:
+    - query: "example topic keyword"
+      title: "Example Blog Post Title for Your Niche"
+      intent: informational
+      priority: medium

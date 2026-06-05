@@ -16,10 +16,31 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 CONFIG_DIR = BASE_DIR / "config"
 
 
+def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
+    merged = dict(base)
+    for key, value in override.items():
+        if key in merged and isinstance(merged[key], dict) and isinstance(value, dict):
+            merged[key] = _deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
 def load_yaml(name: str) -> dict[str, Any]:
     path = CONFIG_DIR / name
     with open(path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def load_project_config() -> dict[str, Any]:
+    """Loads config/project.yaml and merges config/project.local.yaml if present."""
+    cfg = load_yaml("project.yaml")
+    local_path = CONFIG_DIR / "project.local.yaml"
+    if local_path.exists():
+        with open(local_path, "r", encoding="utf-8") as f:
+            local = yaml.safe_load(f) or {}
+        cfg = _deep_merge(cfg, local)
+    return cfg
 
 
 def timestamp() -> str:

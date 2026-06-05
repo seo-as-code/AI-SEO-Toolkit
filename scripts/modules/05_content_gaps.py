@@ -7,7 +7,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, timestamp  # noqa: E402
 
 
 def normalize_text(value: str) -> set[str]:
@@ -20,7 +20,7 @@ def normalize_text(value: str) -> set[str]:
 
 
 def run(gsc_path: str | None = None, semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     thresholds = cfg.get("thresholds", {})
     min_impressions = int(thresholds.get("min_impressions_for_gap", 100))
 

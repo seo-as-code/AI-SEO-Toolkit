@@ -1,0 +1,17 @@
+# Copia este archivo a project.local.yaml (gitignored) y rellena TU sitio.
+# No subas project.local.yaml a GitHub.
+
+project:
+  name: "YOUR_PROJECT_NAME"
+  domain: "your-domain.com"
+  origin: "https://your-domain.com"
+  locale: "es-ES"
+  market: "Your city, Your country"
+
+# Opcional: personaliza rutas de datos, competidores y estrategia de blog
+# data_sources:
+#   gsc_glob: "../data/raw/gsc_*.csv"
+# blog_strategy:
+#   service_pages:
+#     - path: "/services/example/"
+#       anchors: ["your main service keyword"]

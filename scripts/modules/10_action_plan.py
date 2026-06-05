@@ -7,7 +7,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, save_md, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, save_md, timestamp  # noqa: E402
+from lib.url_filters import is_html_page_url  # noqa: E402
 
 
 def score_action(impact: str, effort: str) -> int:
@@ -20,7 +21,12 @@ def add_from_csv(actions: list, pattern: str, module: str, action_tpl: str, reas
     path = latest_file(pattern)
     if not path or not Path(path).exists():
         return
-    df = pd.read_csv(path).head(limit)
+    df = pd.read_csv(path).head(limit * 3)
+    if "url" in df.columns:
+        df = df[df["url"].astype(str).apply(is_html_page_url)]
+    if module == "ux_cro" and "status" in df.columns:
+        df = df[df["status"].astype(str).str.lower() != "pass"]
+    df = df.head(limit)
     for _, row in df.iterrows():
         actions.append(
             {
@@ -36,7 +42,7 @@ def add_from_csv(actions: list, pattern: str, module: str, action_tpl: str, reas
 
 
 def run() -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     project = cfg["project"]["name"]
     out_dir = ROOT / cfg["output"]["reports_dir"]
     exec_dir = ROOT / cfg["output"]["executive_dir"]

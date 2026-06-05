@@ -4,6 +4,9 @@
 *.key
 *.pem
 
+# Local client/site config (never commit)
+config/project.local.yaml
+
 # Python
 __pycache__/
 *.py[cod]

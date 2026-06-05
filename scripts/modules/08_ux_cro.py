@@ -7,13 +7,13 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import fetch_html, load_yaml, parse_page, save_csv, timestamp  # noqa: E402
+from lib.common import fetch_html, load_project_config, parse_page, save_csv, timestamp  # noqa: E402
 
 CTA_KEYWORDS = ["contact", "contacto", "reserva", "book", "quote", "presupuesto", "llama", "whatsapp"]
 
 
 def run() -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     origin = cfg["project"]["origin"]
     crawl_cfg = cfg.get("crawl", {})
 

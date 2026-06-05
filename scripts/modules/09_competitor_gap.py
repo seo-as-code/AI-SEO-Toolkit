@@ -7,7 +7,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import fetch_html, latest_file, load_yaml, parse_page, save_csv, timestamp  # noqa: E402
+from lib.common import fetch_html, latest_file, load_project_config, parse_page, save_csv, timestamp  # noqa: E402
 
 
 def tokenize(text: str) -> set[str]:
@@ -15,7 +15,7 @@ def tokenize(text: str) -> set[str]:
 
 
 def run(semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     semantic_file = semantic_path or latest_file(str(ROOT / "reports/ai/01_semantic_map_*.csv"))
     if not semantic_file or not Path(semantic_file).exists():
         raise FileNotFoundError("Run module 01 first.")

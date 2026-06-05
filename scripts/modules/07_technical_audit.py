@@ -7,11 +7,12 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lib.common import latest_file, load_yaml, save_csv, timestamp  # noqa: E402
+from lib.common import latest_file, load_project_config, save_csv, timestamp  # noqa: E402
+from lib.url_filters import is_html_page_url  # noqa: E402
 
 
 def run(sf_path: str | None = None, semantic_path: str | None = None) -> dict:
-    cfg = load_yaml("project.yaml")
+    cfg = load_project_config()
     ds = cfg.get("data_sources", {})
     sf_file = sf_path or latest_file(str(ROOT / ds.get("sf_csv", "../data/raw/internos_todo.csv")))
     semantic_file = semantic_path or latest_file(str(ROOT / "reports/ai/01_semantic_map_*.csv"))
@@ -36,6 +37,8 @@ def run(sf_path: str | None = None, semantic_path: str | None = None) -> dict:
         sf = sf.rename(columns=rename_map)
         for _, row in sf.iterrows():
             url = str(row.get("url", ""))
+            if not is_html_page_url(url):
+                continue
             status = row.get("status_code", 200)
             if pd.notna(status) and int(status) != 200:
                 issues.append({"url": url, "issue_type": "status_code", "severity": "high", "detail": f"status={status}"})
