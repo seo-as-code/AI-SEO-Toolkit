@@ -18,6 +18,7 @@ reports/ai/*.csv
 reports/ai/*.json
 reports/ai/*.md
 reports/executive/*.md
+reports/executive/*.csv
 data/features/*
 !data/features/.gitkeep
 !reports/ai/.gitkeep

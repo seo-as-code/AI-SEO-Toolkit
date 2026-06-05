@@ -17,6 +17,8 @@ MODULES = [
     ("08 UX/CRO", "scripts/modules/08_ux_cro.py", []),
     ("09 Competitor gap", "scripts/modules/09_competitor_gap.py", []),
     ("10 Action plan", "scripts/modules/10_action_plan.py", []),
+    ("12 Blog strategy", "scripts/modules/12_blog_strategy.py", ["--gsc"]),
+    ("11 Executive report (ES)", "scripts/modules/11_executive_report.py", []),
 ]
 
 
@@ -31,7 +33,7 @@ def run_step(label: str, script_rel: str, extra_args: list[str]) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="AI SEO master orchestrator (10 modules)")
+    parser = argparse.ArgumentParser(description="AI SEO master orchestrator (12 modules)")
     parser.add_argument("--gsc", default="", help="Optional GSC CSV path")
     args = parser.parse_args()
 

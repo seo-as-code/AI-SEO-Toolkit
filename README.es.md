@@ -69,22 +69,22 @@ SEO-as-Code-Toolkit (Capa de Datos)
 
 AI-SEO-Toolkit (Capa de Decision)
   ├─ Lee exportes + crawl del dominio
-  ├─ Ejecuta 10 modulos AI SEO
-  └─ Genera plan de accion priorizado
+  ├─ Ejecuta 12 modulos AI SEO (01-10, 12, 11)
+  └─ Genera plan de accion + informe ejecutivo
 ```
 
 ### Transferencia de datos
 
 | Repo origen | Archivo | Modulo AI que lo usa |
 |---|---|---|
-| SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05 |
+| SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05, 12 |
 | SEO-as-Code | `data/raw/ga4_traffic_last30days.csv` | scoring futuro |
 | SEO-as-Code | `data/raw/internos_todo.csv` | 07 |
 | AI-SEO | crawl del dominio configurado | 01, 08, 09 |
 
 ---
 
-## 4. Framework: 11 modulos AI SEO
+## 4. Framework: 12 modulos AI SEO
 
 | # | Modulo | Script | Output principal | Uso de negocio |
 |---|---|---|---|---|
@@ -98,7 +98,11 @@ AI-SEO-Toolkit (Capa de Decision)
 | 08 | Analisis UX/CRO | `08_ux_cro.py` | checks UX | Mejorar conversion |
 | 09 | Gap competitivo | `09_competitor_gap.py` | gaps vs competidores | Capturar oportunidades no cubiertas |
 | 10 | Plan de accion | `10_action_plan.py` | CSV priorizado (Excel) | Seguimiento operativo |
-| 11 | Informe ejecutivo (ES) | `11_executive_report.py` | **`11_informe_ejecutivo_*.md`** | **Un solo informe legible: modulo a modulo** |
+| 12 | Estrategia de blog | `12_blog_strategy.py` | calendario / temas de blog | Priorizar contenido editorial |
+| 11 | Informe ejecutivo (ES) | `11_executive_report.py` | **`11_informe_ejecutivo_*.md`** | **Informe final legible (resume todo)** |
+
+**Orden del pipeline completo:** `01 → 10 → 12 → 11`  
+El modulo **11 siempre va al final** (consolida los demas). El **12** va justo antes.
 
 Orquestador maestro:
 
@@ -127,6 +131,7 @@ ai-seo-toolkit/
       09_competitor_gap.py
       10_action_plan.py
       11_executive_report.py
+      12_blog_strategy.py
     orchestrator/
       ai_seo_master.py
   prompts/
@@ -209,8 +214,9 @@ Tras la ejecucion, los resultados se guardan en:
 
 Archivos principales:
 
-- `reports/executive/10_action_plan_*.md`
-- `reports/executive/10_action_plan_*.csv`
+- `reports/executive/11_informe_ejecutivo_*.md` — **informe final para cliente**
+- `reports/executive/12_blog_strategy_*.md` — estrategia de blog
+- `reports/executive/10_action_plan_*.csv` — plan de accion priorizado
 - `reports/ai/05_content_gaps_*.csv`
 - `reports/ai/07_technical_audit_*.csv`
 
@@ -254,6 +260,8 @@ Politica recomendada:
 | 08 | Production-ready | Checks UX/CRO heuristicos |
 | 09 | Production-ready | Comparativa de gaps competitivos |
 | 10 | Production-ready | Priorizacion cross-modulo |
+| 11 | Production-ready | Informe ejecutivo final en Markdown |
+| 12 | Production-ready | Estrategia de blog con datos GSC |
 
 ---
 
