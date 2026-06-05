@@ -78,7 +78,7 @@ AI-SEO-Toolkit (Decision Layer)
 | Source repo | Output file | Used by AI module |
 |---|---|---|
 | SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05, 12 |
-| SEO-as-Code | `data/raw/ga4_traffic_last30days.csv` | future scoring |
+| SEO-as-Code | `data/raw/ga4_last30days.csv` | future scoring |
 | SEO-as-Code | `data/raw/internos_todo.csv` | 07 |
 | AI-SEO | live crawl of configured domain | 01, 08, 09 |
 

@@ -78,7 +78,7 @@ AI-SEO-Toolkit (Capa de Decision)
 | Repo origen | Archivo | Modulo AI que lo usa |
 |---|---|---|
 | SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05, 12 |
-| SEO-as-Code | `data/raw/ga4_traffic_last30days.csv` | scoring futuro |
+| SEO-as-Code | `data/raw/ga4_last30days.csv` | scoring futuro |
 | SEO-as-Code | `data/raw/internos_todo.csv` | 07 |
 | AI-SEO | crawl del dominio configurado | 01, 08, 09 |
 

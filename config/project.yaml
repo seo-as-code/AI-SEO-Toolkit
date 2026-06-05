@@ -9,7 +9,7 @@ project:
 # Opcional: conecta con exportes del repo SEO-as-Code (rutas relativas al toolkit)
 data_sources:
   gsc_glob: "../data/raw/gsc_*.csv"
-  ga4_csv: "../data/raw/ga4_traffic_last30days.csv"
+  ga4_csv: "../data/raw/ga4_last30days.csv"
   sf_csv: "../data/raw/internos_html.csv"
 
 competitors:
