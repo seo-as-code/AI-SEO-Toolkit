@@ -60,14 +60,19 @@ This repository solves that by providing:
 
 ---
 
-## 3. How both repositories work together
+## 3. How the three repositories work together
 
 ```text
-SEO-as-Code-Toolkit (Data Layer)
+SEO-as-Code-Toolkit (Data)
   ├─ Extract GSC / GA4 / CrUX / SF
   └─ Save raw exports in data/raw
 
-AI-SEO-Toolkit (Decision Layer)
+programmatic-SEO (Architecture)
+  ├─ Read GSC + crawl CSV
+  ├─ Apply YAML pattern rules
+  └─ Output reports/pseo/*.yaml (URL specs)
+
+AI-SEO-Toolkit (Decision)  ← this repo
   ├─ Read raw exports + website crawl
   ├─ Run 12 AI SEO modules (01-10, 12, 11)
   └─ Generate action plan + executive report
@@ -75,11 +80,12 @@ AI-SEO-Toolkit (Decision Layer)
 
 ### Data handoff
 
-| Source repo | Output file | Used by AI module |
+| Source repo | Output file | Used by |
 |---|---|---|
-| SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05, 12 |
-| SEO-as-Code | `data/raw/ga4_last30days.csv` | future scoring |
-| SEO-as-Code | `data/raw/internos_todo.csv` | 07 |
+| SEO-as-Code | `data/raw/gsc_*.csv` | programmatic-SEO, AI modules 03, 05, 12 |
+| SEO-as-Code | `data/raw/ga4_last30days.csv` | future AI scoring |
+| SEO-as-Code | `data/raw/internos_html.csv` | programmatic-SEO, AI module 07 |
+| programmatic-SEO | `reports/pseo/pseo_opportunities_*.yaml` | CMS / dev implementation |
 | AI-SEO | live crawl of configured domain | 01, 08, 09 |
 
 ---

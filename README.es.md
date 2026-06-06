@@ -60,14 +60,19 @@ Este repositorio aporta:
 
 ---
 
-## 3. Como trabajan juntos los dos repositorios
+## 3. Como trabajan los tres repositorios
 
 ```text
-SEO-as-Code-Toolkit (Capa de Datos)
+SEO-as-Code-Toolkit (Datos)
   ├─ Extrae GSC / GA4 / CrUX / SF
   └─ Guarda exportes en data/raw
 
-AI-SEO-Toolkit (Capa de Decision)
+programmatic-SEO (Arquitectura)
+  ├─ Lee GSC + crawl CSV
+  ├─ Aplica reglas YAML
+  └─ Genera reports/pseo/*.yaml
+
+AI-SEO-Toolkit (Decision)  ← este repo
   ├─ Lee exportes + crawl del dominio
   ├─ Ejecuta 12 modulos AI SEO (01-10, 12, 11)
   └─ Genera plan de accion + informe ejecutivo
@@ -75,11 +80,12 @@ AI-SEO-Toolkit (Capa de Decision)
 
 ### Transferencia de datos
 
-| Repo origen | Archivo | Modulo AI que lo usa |
+| Repo origen | Archivo | Lo usa |
 |---|---|---|
-| SEO-as-Code | `data/raw/gsc_*.csv` | 03, 05, 12 |
+| SEO-as-Code | `data/raw/gsc_*.csv` | programmatic-SEO, modulos 03, 05, 12 |
 | SEO-as-Code | `data/raw/ga4_last30days.csv` | scoring futuro |
-| SEO-as-Code | `data/raw/internos_todo.csv` | 07 |
+| SEO-as-Code | `data/raw/internos_html.csv` | programmatic-SEO, modulo 07 |
+| programmatic-SEO | `reports/pseo/pseo_opportunities_*.yaml` | CMS / implementacion |
 | AI-SEO | crawl del dominio configurado | 01, 08, 09 |
 
 ---
